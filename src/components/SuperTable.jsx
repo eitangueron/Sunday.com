@@ -78,7 +78,7 @@ export default inject('tasksStore')(observer(function SuperTable(props) {
   const addTask = (rowData) => {
     const newTask = { ...rowData, category: props.category }
     try{
-      if(!(rowData.taskName && row.description && row.priority && row.deadLine && row.status )){
+      if(!(rowData.taskName && rowData.description && rowData.priority && rowData.deadLine && rowData.status )){
         setSnackbarMessage(`Please fill all options`)
         setSnackbarStatus('error')
         setOpenSnackbar(true)
