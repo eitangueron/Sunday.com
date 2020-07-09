@@ -167,7 +167,7 @@ router.post('/login', function (req, res) {
                     }
                     WRONG_LOG_IN_USERNAME = name
                     attempt++
-                    console.log(attempt)
+                    // console.log(attempt)
                     res.send({ "status": returnMessage, "id": results[0].id })
                 }
             } else {
@@ -329,7 +329,7 @@ router.post('/send', (req, res) => {
         if (error) {
           console.log(error);
         } else {
-          console.log('Email sent: ' + info.response);
+        //   console.log('Email sent: ' + info.response);
         }
       });
   })
@@ -366,7 +366,7 @@ router.post('/sendCompleted', (req, res) => {
         if (error) {
           console.log(error);
         } else {
-          console.log('Email sent: ' + info.response);
+        //   console.log('Email sent: ' + info.response);
         }
       });
   })
@@ -396,7 +396,7 @@ router.post('/sendNot', (req, res) => {
         if (error) {
           console.log(error);
         } else {
-          console.log('Email sent: ' + info.response);
+        //   console.log('Email sent: ' + info.response);
         }
       });
   })
