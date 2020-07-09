@@ -96,58 +96,6 @@ const Profile = inject('tasksStore')(observer((props) => {
       const response = await Axios.get(`https://tinyfac.es/api/users`);
       url = response.data[0].avatars[1].url 
       setAvatar(url)
-<<<<<<< HEAD
-  }
-  getAvatar();
-}, []); 
-
-      return (
-        <div>
-          <ScopedCssBaseline>
-            <MuiThemeProvider>
-              <Box
-                width='48%'
-                boxShadow={4}
-                style={{ justifyContent: 'center' }}>
-                          <Paper elevation={4}>
-                              <br></br>
-                  <Avatar
-                    alt='https://api.adorable.io/avatars/285/abott@adorable.png'
-                    src= {`${avatar}` || ""}
-                    // src='https://image.flaticon.com/icons/png/512/1752/1752735.png'
-                    className={classes.large}
-                  />
-                  <div className={classes.root}>
-                    <Typography
-                      color='primary'
-                      variant='h5'
-                      component='h1'
-                      gutterBottom>
-                      {bull} First Name: {localStorage.getItem('firstName')}
-                    </Typography>
-                    <Typography
-                      color='primary'
-                      variant='h5'
-                      component='h2'
-                      gutterBottom>
-                      {bull} Last Name: {localStorage.getItem('lastName')}
-                    </Typography>
-                    <Typography
-                      color='primary'
-                      variant='h5'
-                      component='h3'
-                      gutterBottom>
-                      {bull} User Name : {localStorage.getItem('username')}
-                    </Typography>
-                    <Typography
-                      color='primary'
-                      variant='h5'
-                      component='h4'
-                      gutterBottom>
-                      {bull} Email : {localStorage.getItem('email')}
-                    </Typography>
-                    {/* <Typography
-=======
     }
     getAvatar();
   }, []);
@@ -199,7 +147,6 @@ const Profile = inject('tasksStore')(observer((props) => {
                   {bull} Email : {localStorage.getItem('email')}
                 </Typography>
                 {/* <Typography
->>>>>>> 93abbd2abc44fb0f00dec066d01520a23d7a151b
                       color='primary'
                       variant='h5'
                       component='h4'

@@ -77,12 +77,13 @@ export default inject('tasksStore')(observer(function SuperTable(props) {
 
   const addTask = (rowData) => {
     const newTask = { ...rowData, category: props.category }
-<<<<<<< HEAD
     try{
-      if(!(rowData.taskName && row.description && row.priority && row.deadLine && row.status )){ throw new err }
-=======
-    try {
->>>>>>> 93abbd2abc44fb0f00dec066d01520a23d7a151b
+      if(!(rowData.taskName && row.description && row.priority && row.deadLine && row.status )){
+        setSnackbarMessage(`Please fill all options`)
+        setSnackbarStatus('error')
+        setOpenSnackbar(true)
+        return
+        }
       tasksStore.addTask(newTask)
       setSnackbarMessage(`Added New Task`)
       setSnackbarStatus('success')
@@ -168,19 +169,11 @@ export default inject('tasksStore')(observer(function SuperTable(props) {
 
       />
 
-<<<<<<< HEAD
-      <Snackbar open={openSnackbar} autoHideDuration={5000} 
-      anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}>
-          <Alert onClose={()=>setOpenSnackbar(false)} severity={snackbarStatus} variant="filled">
-              {snackbarMessage}
-          </Alert>
-=======
-      <Snackbar open={openSnackbar} autoHideDuration={6000}
+      <Snackbar open={openSnackbar} autoHideDuration={5000}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}>
         <Alert onClose={() => setOpenSnackbar(false)} severity={snackbarStatus} variant="filled">
           {snackbarMessage}
         </Alert>
->>>>>>> 93abbd2abc44fb0f00dec066d01520a23d7a151b
       </Snackbar>
 
     </div>
