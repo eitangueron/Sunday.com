@@ -84,7 +84,7 @@ const Profile = inject('tasksStore')(observer((props) => {
 }, []); 
 
       return (
-        <div>git 
+        <div>
           <ScopedCssBaseline>
             <MuiThemeProvider>
               <Box
