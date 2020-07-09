@@ -121,7 +121,7 @@ const TeamHandler = inject('usernamesStore', 'user', 'teamsStore')(observer((pro
             <button onClick={() => removeMemberFromTeam()}>Remove</button>
 
 
-            <Snackbar open={openSnackbar} autoHideDuration={6000}
+            <Snackbar open={openSnackbar} autoHideDuration={5000}
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}>
                 <Alert onClose={() => setOpenSnackbar(false)} severity={snackbarStatus} variant="filled">
                     {snackbarMessage}

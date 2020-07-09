@@ -71,7 +71,7 @@ const Login = inject('tasksStore', 'user')(observer((props) => {
                     <Button variant="contained" color="primary"> Create New Account </Button>
                 </Link>
 
-                <Snackbar open={openSnackbar} autoHideDuration={6000} 
+                <Snackbar open={openSnackbar} autoHideDuration={5000} 
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}>
                     <Alert onClose={()=>setOpenSnackbar(false)} severity="error" variant="filled">
                         <span style={{display:'block'}}> {'Incorrect Password!'} </span>
@@ -79,7 +79,7 @@ const Login = inject('tasksStore', 'user')(observer((props) => {
                     </Alert>
                 </Snackbar>               
 
-                <Snackbar open={openSnackbar2} autoHideDuration={6000} 
+                <Snackbar open={openSnackbar2} autoHideDuration={5000} 
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}>
                     <Alert onClose={()=>setOpenSnackbar2(false)} severity="error" variant="filled">
                         <span style={{display:'block'}}>Please fill all input fields</span>

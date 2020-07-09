@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import Axios from 'axios';
 
+// const API_URL = 'http://localhost:3200'
+const API_URL = ''
+
 const Welcome = (props) => {
     
     const getDateNow = ()=> {
@@ -23,19 +26,19 @@ const Welcome = (props) => {
     }
 
 
-    // const [greeting, setGreeting] =  useState('')
+    const [userName, setUserName] =  useState('')
 
-    // const getUserName = async () => {
-    //     const userId = localStorage['userId']
-    //     const res = await Axios.get(`http://localhost:3200/user/${userId}`)
-    //     const userName = res.data.firstName + ' ' + res.data.lastName
-    //     setGreeting( 'Weclome ' + userName + ',' )
-    // }
+    const getUserName = async () => {
+        const userId = localStorage['userId']
+        const res = await Axios.get(`${API_URL}/user/${userId}`)
+        const theUserName = res.data.firstName + ' ' + res.data.lastName
+        setUserName( theUserName )
+    }
 
-    // useEffect(()=>getUserName(),[])
+    useEffect(()=>getUserName(),[])
 
 
-    const userName = localStorage['username']
+    // const userName = localStorage['username']
 
     return (
        <div id="welcome-container">

@@ -218,7 +218,7 @@ export default inject('teamsStore', 'tasksStore')(observer(function TeamsByTaskT
                     } } 
             />
 
-            <Snackbar open={openSnackbar} autoHideDuration={6000} 
+            <Snackbar open={openSnackbar} autoHideDuration={5000} 
             anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}>
                 <Alert onClose={()=>setOpenSnackbar(false)} severity={snackbarStatus} variant="filled">
                     {snackbarMessage}

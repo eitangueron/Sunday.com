@@ -74,7 +74,7 @@ const Tasks = inject('tasksStore','user')(observer((props) => {
                 {Object.keys(groupedTasks).map((group, i) => <SuperTable key={i} category={group} tasks={groupedTasks[group]}/>)}
             </div>
 
-            <Snackbar open={openSnackbar} autoHideDuration={6000} 
+            <Snackbar open={openSnackbar} autoHideDuration={5000} 
             anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}>
                 <Alert onClose={()=>setOpenSnackbar(false)} severity={snackbarStatus} variant="filled">
                     {snackbarMessage}
