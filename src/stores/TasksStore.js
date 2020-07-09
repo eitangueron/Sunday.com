@@ -15,7 +15,7 @@ export class Tasks {
   @computed get getTasksByCategory() {
     const groupedTasks = {}
     this._tasks.forEach(t => groupedTasks[t.category] ? groupedTasks[t.category].push(t) : groupedTasks[t.category] = [t])
-    console.log(groupedTasks)
+    // console.log(groupedTasks)
     const newTasks = this._tasks.filter(t => t.category === this.categories[this.categories.length - 1])
     this.categories.forEach(c => {
       let newTasks = this._tasks.filter(t => t.category === c)
