@@ -17,15 +17,17 @@ const Analysis = inject('tasksStore')(observer((props) => {
     const [urgentTasks, setUrgent] = useState(0)
     const [completedTasks, setCompleted] = useState(0)
 
-    const getAnalysis = async () => {
-        await props.tasksStore.getTasksFromDB(props.tasksStore.userId)
+    const getAnalysis = () => {
+        props.tasksStore.getTasksFromDB(props.tasksStore.userId)
         let tasks = props.tasksStore._tasks
         tasks = JSON.parse(JSON.stringify(tasks))
-        const totalTasks = tasks.length
-        const completedTasks = tasks.filter(u => u.status == "Completed").length
-        const urgentTasks = tasks.filter(u => u.priority == "Urgent").length
-        setUrgent((urgentTasks / totalTasks) * 100)
-        setCompleted((completedTasks / totalTasks) * 100)
+        const totalTasks = tasks.length 
+        const completedTasks = tasks.filter(u=>(u.status=="3" || u.status=="Completed")).length
+        const urgentTasks = tasks.filter(u=>(u.priority=="1" || u.priority=="Urgent")).length
+        const numUrgent = (totalTasks==0 || urgentTasks==0) ? 0 :  (urgentTasks/totalTasks)*100
+        const numCom = (totalTasks==0 || completedTasks==0) ? 0 :  (completedTasks/totalTasks)*100
+        setUrgent(numUrgent)
+        setCompleted(numCom)
     }
 
 
