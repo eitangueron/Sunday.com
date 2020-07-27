@@ -6,15 +6,15 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Typography, Box } from '@material-ui/core';
 import 'fontsource-roboto';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
 
 
-import { sizing } from '@material-ui/system';
-import { shadows } from '@material-ui/system';
+// import { sizing } from '@material-ui/system';
+// import { shadows } from '@material-ui/system';
 
 const useStyles = makeStyles({
   root: {
@@ -80,20 +80,25 @@ const Profile = inject('tasksStore')(observer((props) => {
       tasks = JSON.parse(JSON.stringify(tasks));
       // console.log(tasks);
       //   const totalTasks = tasks.length;
+      // eslint-disable-next-line
       const completedTasks = tasks.filter((u) => (u.status == '3') || (u.status == 'Completed')).length;
       const urgentTasks = tasks.filter(
+        // eslint-disable-next-line
         (u) => (u.priority == '1' || u.priority == 'Urgent'
+        // eslint-disable-next-line
         ) && u.status != 'Completed').length;
       setUrgent(urgentTasks);
       setCompleted(completedTasks);
     };
     getAnalysis()
+    // eslint-disable-next-line
   }, []);
   // useEffect(getAvatar, []);
 
   useEffect(() => {
     async function getAvatar() {
       const response = await Axios.get(`https://tinyfac.es/api/users`);
+      // eslint-disable-next-line
       url = response.data[0].avatars[1].url 
       setAvatar(url)
     }

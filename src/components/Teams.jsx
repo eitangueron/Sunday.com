@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { inject, observer, PropTypes } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import TeamsByMembers from './TeamsByMembers';
 import TeamsByTasks from './TeamsByTasks';
-import { TextField, Button } from '@material-ui/core';
+import {  Button } from '@material-ui/core';
 import { useEffect } from 'react';
-import { Router, Link } from 'react-router-dom';
+// import { Router, Link } from 'react-router-dom';
 import '../styles/teams.css'
-import { InputLabel, NativeSelect } from '@material-ui/core';
+import {  NativeSelect } from '@material-ui/core';
 import axios from 'axios';
-import TeamManager from './TeamManager'
+// import TeamManager from './TeamManager'
 import TeamHandler from './TeamHandler'
 
-// const API_URL = 'http://localhost:3200';
-const API_URL = ''
+const API_URL = 'http://localhost:3200';
+// const API_URL = ''
 
 const Teams = inject('teamsStore')(observer((props) => {
     const [taskInput, settaskInput] = useState('')
@@ -22,11 +22,11 @@ const Teams = inject('teamsStore')(observer((props) => {
     const [alltasks, setAll] = useState([])
     const statusArr = ['Starting','In progress','Completed']
 
-
+// eslint-disable-next-line
     const fetchData = () => {
         props.teamsStore.getTeams(localStorage.getItem('userId'))
     }
-
+// eslint-disable-next-line
     const getTasks = async () => {
         let alltasks = []
         try {
@@ -43,6 +43,7 @@ const Teams = inject('teamsStore')(observer((props) => {
             await props.teamsStore.getTeams(localStorage.getItem('userId'))
         }
         fetchData()
+        // eslint-disable-next-line
     }, [])
 
     useEffect(()=>{

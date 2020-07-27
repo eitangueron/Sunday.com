@@ -6,10 +6,10 @@ import { useEffect } from 'react';
 import { InputLabel, NativeSelect, TextField, Button } from '@material-ui/core';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
-const capitalize = require('capitalize')
+// const capitalize = require('capitalize')
 
-// const API_URL = 'http://localhost:3200'
-const API_URL = ''
+const API_URL = 'http://localhost:3200'
+// const API_URL = ''
 
 
 const TeamHandler = inject('usernamesStore', 'user', 'teamsStore')(observer((props) => {
@@ -23,6 +23,7 @@ const TeamHandler = inject('usernamesStore', 'user', 'teamsStore')(observer((pro
     const [memberToDelete, setMemberToDelete] = useState('')
 
     const [newTeamInput, setTeamInput] = useState('')
+    // eslint-disable-next-line
     const [team, setTeammm] = useState(props.teamsStore.teams.find(t => t.name == teamInput))
 
     const [openSnackbar, setOpenSnackbar] = useState(false)
@@ -73,6 +74,7 @@ const TeamHandler = inject('usernamesStore', 'user', 'teamsStore')(observer((pro
             setTeams(res.data.map(t => t.teamName))
         }
         getTeams()
+        // eslint-disable-next-line
     }, [team])
 
 

@@ -1,7 +1,7 @@
 import { observable, computed, action } from 'mobx';
 import axios from 'axios';
-// const API_URL = 'http://localhost:3200';
-const API_URL = ''
+const API_URL = 'http://localhost:3200';
+// const API_URL = ''
 const dateFormat = require('dateformat');
 
 
@@ -16,6 +16,7 @@ export class Tasks {
     const groupedTasks = {}
     this._tasks.forEach(t => groupedTasks[t.category] ? groupedTasks[t.category].push(t) : groupedTasks[t.category] = [t])
     // console.log(groupedTasks)
+    // eslint-disable-next-line
     const newTasks = this._tasks.filter(t => t.category === this.categories[this.categories.length - 1])
     this.categories.forEach(c => {
       let newTasks = this._tasks.filter(t => t.category === c)
@@ -83,8 +84,9 @@ export class Tasks {
     }
 
     try {
+      // eslint-disable-next-line
       let savedTask = await axios.post(`${API_URL}/tasks/${this.userId}`, newTask);
-      console.log(savedTask)
+      // console.log(savedTask)
       await this.getTasksFromDB(this.userId);
 
     } catch (err) {
@@ -100,11 +102,15 @@ export class Tasks {
 
     for(let tracked of tracking) {
       let checkStatus = false
+      // eslint-disable-next-line
       if((newTask.status=="In progress" || newTask.status=="Inprogress"  ||   newTask.status==2) && tracked.status=="In progress") checkStatus=true
+      // eslint-disable-next-line
       if(( newTask.status=="Completed"  ||   newTask.status==3) && tracked.status=="Completed") checkStatus=true
+      // eslint-disable-next-line
       if(( newTask.status=="Starting"  ||   newTask.status==1) && tracked.status=="Starting") checkStatus=true
+      // eslint-disable-next-line
       if(tracked.taskId==taskId && checkStatus) {
-        console.log(tracked)
+        // console.log(tracked)
         const email = tracked.email
         await axios({ method: "POST", 
         url:`${API_URL}/sendNot`, 

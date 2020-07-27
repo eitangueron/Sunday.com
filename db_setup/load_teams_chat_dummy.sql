@@ -1,4 +1,4 @@
--- USE sunday_finalproject; 
+USE sunday_finalproject; 
 
 
 -- INSERT INTO teams_chat VALUES (NULL,1,"Ahmad",2,"Hey!","2020-07-06 16:50:23");

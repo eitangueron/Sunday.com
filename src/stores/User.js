@@ -1,4 +1,4 @@
-import Axios from "axios";
+// import Axios from "axios";
 
 const { observable, action, computed } = require("mobx");
 
@@ -22,7 +22,7 @@ export class User {
         localStorage.setItem("loggedIn", 'true')
         localStorage.setItem("username",  details.userName)
         this.loggedIn = 'true'
-        console.log(details);
+        // console.log(details);
     }
 
     @action logout(){

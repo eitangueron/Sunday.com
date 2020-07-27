@@ -10,8 +10,8 @@ import { Link } from 'react-router-dom';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 
-// const API_URL = 'http://localhost:3200'
-const API_URL = ''
+const API_URL = 'http://localhost:3200'
+// const API_URL = ''
 
 const Login = inject('tasksStore', 'user')(observer((props) => {
 
@@ -30,7 +30,7 @@ const Login = inject('tasksStore', 'user')(observer((props) => {
             return
         }
         Axios.post(`${API_URL}/login`,loginData).then( async res => {
-            console.log(res.data.status )
+            // console.log(res.data.status )
             if(res.data.status === 'OK'){
 
                 const userID = res.data.userId
@@ -40,7 +40,7 @@ const Login = inject('tasksStore', 'user')(observer((props) => {
 
                 await props.tasksStore.getTasksFromDB(userID) // does not seem to be vital
 
-                console.log(response);
+                // console.log(response);
                 let details = response.data 
                 localStorage.setItem('firstName', `${details.firstName}`);
                 localStorage.setItem('lastName', `${details.lastName}`);

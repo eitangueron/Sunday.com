@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/signUp.css'
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { useState } from 'react';
@@ -9,8 +9,8 @@ import { inject, observer } from 'mobx-react';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 
-// const API_URL = 'http://localhost:3200'
-const API_URL = ''
+const API_URL = 'http://localhost:3200'
+// const API_URL = ''
 
 const SignUp = inject('usernamesStore')(observer((props) => {
     
@@ -20,7 +20,7 @@ const SignUp = inject('usernamesStore')(observer((props) => {
 
 
     const users = props.usernamesStore.usernames.map(u => u.username)
-    console.log('in sign up', users)
+    // console.log('in sign up', users)
 
     const [inputs, setInputs] = useState({
         userName: '',

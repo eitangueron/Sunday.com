@@ -1,7 +1,7 @@
 const { observable } = require("mobx");
 const { default: Axios } = require("axios");
-// const API_URL = 'http://localhost:3200'
-const API_URL = ''
+const API_URL = 'http://localhost:3200'
+// const API_URL = ''
 
 export class UsernamesStore {
     @observable usernames = []

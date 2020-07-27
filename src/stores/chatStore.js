@@ -1,7 +1,7 @@
-import { observable, action, computed } from 'mobx';
+import { observable, action } from 'mobx';
 import Axios from 'axios'
-// const API_URL = 'http://localhost:3200'
-const API_URL = ''
+const API_URL = 'http://localhost:3200'
+// const API_URL = ''
 
 export class ChatStore {
   @observable MY_USER_ID;

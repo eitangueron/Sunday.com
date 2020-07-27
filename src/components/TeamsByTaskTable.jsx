@@ -21,10 +21,10 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
-import AlarmOnIcon from '@material-ui/icons/AlarmOn';
+// import AlarmOnIcon from '@material-ui/icons/AlarmOn';
 
-// const API_URL = 'http://localhost:3200'
-const API_URL = ''
+const API_URL = 'http://localhost:3200'
+// const API_URL = ''
 
 const tableIcons = {
     Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -129,6 +129,7 @@ export default inject('teamsStore', 'tasksStore')(observer(function TeamsByTaskT
 
 
     const updateTask = async (rowData) => {
+        // eslint-disable-next-line
         if(rowData.status=="Completed") {
             notifyAdmin(rowData.taskName,rowData.description,rowData.deadLine,props.name,rowData.assignee)
         }
@@ -165,12 +166,14 @@ export default inject('teamsStore', 'tasksStore')(observer(function TeamsByTaskT
         let oldData = { ...state }
         oldData.data = props.rows
         setState(oldData)
+        // eslint-disable-next-line
     }, [props.rows, state.teams])
 
     //ahmad - make this create the automation (onclicked in lone 177 if you need to enter row data)
-    const tellMeWhenComplete = () => {
-        alert('hey')
-    }
+
+    // const tellMeWhenComplete = () => {
+    //     alert('hey')
+    // }
 
     return (
         <div className="tasks-category-table">
@@ -217,6 +220,7 @@ export default inject('teamsStore', 'tasksStore')(observer(function TeamsByTaskT
                         })  
                     } } 
                     onRowClick={((evt, selectedRow) => setSelectedRow(selectedRow.tableData.id))}
+                    // eslint-disable-next-line
                     options={{ rowStyle: rowData => ({backgroundColor: (selectedRow === rowData.tableData.id) ? '#EEE' : '#FFF'})},
                     { headerStyle: { backgroundColor: '#01579b', color: '#FFF' }}}
             />

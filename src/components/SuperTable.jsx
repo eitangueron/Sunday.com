@@ -18,10 +18,10 @@ import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import { useEffect } from 'react';
-import { Input } from '@material-ui/core';
+// import { Input } from '@material-ui/core';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
-const capitalize = require('capitalize')
+// const capitalize = require('capitalize')
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -128,6 +128,7 @@ export default inject('tasksStore')(observer(function SuperTable(props) {
     let oldData = { ...state }
     oldData.data = props.tasks
     setState(oldData)
+    // eslint-disable-next-line
   }, [props.tasks])
 
   return (
@@ -164,6 +165,7 @@ export default inject('tasksStore')(observer(function SuperTable(props) {
         } : {}}
   
         onRowClick={((evt, selectedRow) => setSelectedRow(selectedRow.tableData.id))}
+        // eslint-disable-next-line
         options={{ rowStyle: rowData => ({backgroundColor: (selectedRow === rowData.tableData.id) ? '#EEE' : '#FFF'})},
         { headerStyle: { backgroundColor: '#01579b', color: '#FFF' }}}
 

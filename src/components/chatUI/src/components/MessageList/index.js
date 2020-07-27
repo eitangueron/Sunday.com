@@ -9,8 +9,8 @@ import io from 'socket.io-client'
 import { inject, observer } from 'mobx-react';
 import Axios from 'axios';
 
-// const API_URL = 'http://localhost:3200'
-const API_URL = ''
+const API_URL = 'http://localhost:3200'
+// const API_URL = ''
 
 const socketURL = API_URL
 const socket = io(socketURL)
@@ -19,16 +19,20 @@ const socket = io(socketURL)
 export default inject('tasksStore', 'user', 'chatStore')(observer(function MessageList(props) {
   
   const chatStore = props.chatStore
+  // eslint-disable-next-line
   const userStore = props.user
   const MY_USER_ID = chatStore.MY_USER_ID     //which is in local storage
+  // eslint-disable-next-line
   let MY_TEAMS_IDS = chatStore.MY_TEAMS_IDS    
   let MY_USER_NAME = chatStore.MY_USER_NAME
   let currentTeamDisplayedID = chatStore.currentTeamDisplayedID 
+  // eslint-disable-next-line
   let teamName = chatStore.teamName
   const [messages, setMessages] = useState([])    //intiate with past msgs from DB sorted by date time
   const [messagesToRender, setMessagesToRender] = useState([])
-  // const API_URL = '${API_URL}'
-const API_URL = ''
+  // eslint-disable-next-line
+  const API_URL = '${API_URL}'
+// const API_URL = ''
   
   useEffect(() => {
       chatStore.setMY_USER_ID()
@@ -38,10 +42,12 @@ const API_URL = ''
       })
       getMessages(currentTeamDisplayedID);
       chatStore.setUserName()
+      // eslint-disable-next-line
   },[])
   
   useEffect(() => {
     renderMessages();
+    // eslint-disable-next-line
   },[messages])
 
 
@@ -49,10 +55,12 @@ const API_URL = ''
     socket.emit('joinRoom',currentTeamDisplayedID)   
     getMessages(currentTeamDisplayedID)       //byteamID
     chatStore.getTeamName()
+    // eslint-disable-next-line
   },[currentTeamDisplayedID])
 
 
   const getMessages = async (teamID) => {
+    // eslint-disable-next-line
      var tempMessages = [
         {
           id: 1,
@@ -131,6 +139,7 @@ const API_URL = ''
       let previous = messages[i - 1];
       let current = messages[i];
       let next = messages[i + 1];
+      // eslint-disable-next-line
       let isMine = current.author == MY_USER_ID;
       let currentMoment = moment(current.timestamp);
       let prevBySameAuthor = false;

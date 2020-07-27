@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 // import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 // import TasksTable from './TasksTable'
-import AddTask from './AddTask'
+// import AddTask from './AddTask'
 import { inject, observer } from 'mobx-react'
 import '../styles/tasksPage.css'
 // import { toJS } from 'mobx'
@@ -16,6 +16,7 @@ const capitalize = require('capitalize')
 const Tasks = inject('tasksStore','user')(observer((props) => {
 
     // [props.tasksStore._tasks.map(t => toJS(t))]
+    // eslint-disable-next-line
     const tasks = props.tasksStore._tasks
     
     // let tasks = []
@@ -31,6 +32,7 @@ const Tasks = inject('tasksStore','user')(observer((props) => {
           await props.tasksStore.getTasksFromDB(localStorage.getItem('userId'))
         }
         fetchData();
+        // eslint-disable-next-line
       }, []);
 
     const groupedTasks = props.tasksStore.getTasksByCategory

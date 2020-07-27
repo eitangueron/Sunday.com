@@ -23,7 +23,7 @@ const App = inject('tasksStore', 'user')(observer((props) => {
 
      <NavBar />
 
-      <Route path='/' >
+      <Route exact path='/' >
         {props.user.loggedIn === 'true' ? <Redirect to="/welcome" /> : <Redirect to="/login" />}
       </Route>
 

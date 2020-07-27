@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { inject, observer } from 'mobx-react';
-import { Task } from '../stores/Task'
+// import { Task } from '../stores/Task'
 import TeamsByTaskTable from './TeamsByTaskTable';
 import { useEffect } from 'react';
 import Axios from 'axios';
-// const API_URL = 'http://localhost:3200'
-const API_URL = ''
+const API_URL = 'http://localhost:3200'
+// const API_URL = ''
 
 const TeamsByTasks = inject('teamsStore')(observer((props) => {
 
@@ -26,6 +26,7 @@ const TeamsByTasks = inject('teamsStore')(observer((props) => {
             }
         }
         isAdmin()
+        // eslint-disable-next-line
     }, [])
     
     const modifyTeams = (teams) => {

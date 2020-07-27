@@ -5,12 +5,12 @@
 
 -- -- First run this, refresh your mysql extension and check that it was added, then comment it out:
 
--- -- CREATE DATABASE sunday_finalProject;
+-- CREATE DATABASE sunday_finalProject;
 
 -- -- ///////////  /////////   ///////////    //////////  ///////// //////////////  ////////
 
 -- -- Then uncomment this line and a singe create table every time:
--- USE sunday_finalproject;
+USE sunday_finalproject;
 
 -- -- ///////////  /////////   ///////////    //////////  ///////// //////////////  ////////
 

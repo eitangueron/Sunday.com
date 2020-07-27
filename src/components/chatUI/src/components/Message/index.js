@@ -9,6 +9,7 @@ export default function Message(props) {
       startsSequence,
       endsSequence,
       showTimestamp,
+      // eslint-disable-next-line
       authorname
     } = props;
     // const authorName = props.author

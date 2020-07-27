@@ -4,8 +4,8 @@ import io from 'socket.io-client'
 import './ConversationListItem.css';
 import { observer, inject } from 'mobx-react';
 
-// const API_URL = 'http://localhost:3200'
-const API_URL = ''
+const API_URL = 'http://localhost:3200'
+// const API_URL = ''
 const socketURL = API_URL
 const socket = io(socketURL)
 
@@ -15,7 +15,7 @@ export default inject('tasksStore', 'user', 'chatStore')(observer(function Conve
     shave('.conversation-snippet', 20);
   })
 
-
+// eslint-disable-next-line
   const { photo, name, text, id } = props.data;
   const smileyURL = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTwHl3CqnmdRLzFDr5ZtpWEt8qq2MiHUetfww&usqp=CAU'
 

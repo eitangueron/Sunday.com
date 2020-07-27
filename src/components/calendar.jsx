@@ -1,9 +1,11 @@
-import PickyDateTime from 'react-picky-date-time';
+// import PickyDateTime from 'react-picky-date-time';
 import React, { Component } from 'react';
 import ReactLightCalendar from '@lls/react-light-calendar'
 import '@lls/react-light-calendar/dist/index.css'
 import '../styles/calendar.css'
+// eslint-disable-next-line
 const DAY_LABELS = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']
+// eslint-disable-next-line
 const MONTH_LABELS = ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aûot', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
 
 class Calendar extends Component {

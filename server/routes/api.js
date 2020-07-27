@@ -562,7 +562,7 @@ router.post('/teamschat', function (req, res) {
     const messageInfo = req.body
     const dt = dateTime.create();
     const  formatted = dt.format('Y-m-d H:M:S');
-    console.log(formatted);
+    // console.log(formatted);
     sequelize.query(`INSERT INTO teams_chat VALUES(null,${messageInfo.teamId},"${messageInfo.author}",${messageInfo.authorid},"${messageInfo.message}","${formatted}")
                     `)
         .then( function (result) {
