@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React
+// , { useState, useEffect } 
+from 'react';
 import '../styles/welcomePage.css'
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 // import { observer, inject } from 'mobx-react';
-import Axios from 'axios';
+// import Axios from 'axios';
 
-const API_URL = 'http://localhost:3200'
+// const API_URL = 'http://localhost:3200'
 // const API_URL = ''
 
 const Welcome = (props) => {
@@ -27,17 +29,18 @@ const Welcome = (props) => {
     }
 
 
-    const [userName, setUserName] =  useState('')
+    let userName = localStorage['firstName'] +  ' ' +localStorage['lastName']
+    
+    // const [userName, setUserName] =  useState('')
 
-    const getUserName = async () => {
-        const userId = localStorage['userId']
-        const res = await Axios.get(`${API_URL}/user/${userId}`)
-        const theUserName = res.data.firstName + ' ' + res.data.lastName
-        setUserName( theUserName )
-    }
+    // const getUserName = async () => {
+    //     const userId = localStorage['userId']
+    //     const res = await Axios.get(`${API_URL}/user/${userId}`)
+    //     const theUserName = res.data.firstName + ' ' + res.data.lastName
+    //     setUserName( theUserName )
+    // }
 
-    useEffect(()=>getUserName(),[])
-
+    // useEffect(getUserName,[])
 
     // const userName = localStorage['username']
 
