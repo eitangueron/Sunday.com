@@ -31,7 +31,9 @@ export default inject('tasksStore', 'user', 'chatStore')(observer(function Messa
   const [messages, setMessages] = useState([])    //intiate with past msgs from DB sorted by date time
   const [messagesToRender, setMessagesToRender] = useState([])
   // eslint-disable-next-line
-  const API_URL = '${API_URL}'
+  // const API_URL = '${API_URL}' //weird not understood
+
+  const API_URL = 'http://localhost:3200'
 // const API_URL = ''
   
   useEffect(() => {

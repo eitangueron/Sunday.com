@@ -1,54 +1,58 @@
 import { observable, action } from "mobx";
-import Task from '../stores/Task'
+// import Task from '../stores/Task'
 import axios from 'axios';
 const dateFormat = require('dateformat');
 const API_URL = 'http://localhost:3200';
 // const API_URL = '';
 
 // eslint-disable-next-line
-const dummyTeams = [
-    {
-        name: 'BackEnd Team',
-        id: 5646,
-        members: ['Ahmad', 'Eitan', 'Anas'],
-        tasks: [
-            {
-                task: new Task(1, 'routes', 'in the back', 'Hight', 'today', 3, 'category1'),
-                assignee: 'Ahmad'
-            },
-            {
-                task: new Task(2, 'DataBase', 'in the db', 'Urgernt', 'tmw', 2, 'category2'),
-                assignee: 'Ahmad'
-            },
-            {
-                task: new Task(3, 'Dummies', 'for testing', 'Medium', 'today', 6, 'category2'),
-                assignee: 'Eitan'
-            }
-        ]
-    }
-    ,
-    {
-        name: 'FronEnd Team',
-        id: 3943,
-        members: ['Eitan', 'Anas'],
-        tasks: [
-            {
-                task: new Task(1, 'components', 'in REACT', 'Hight', 'today', 0, 'category4'),
-                assignee: 'Anas'
-            },
-            {
-                task: new Task(2, 'Stores', 'in the stores file', 'Low', 'today', 54, 'category3'),
-                assignee: 'Anas'
-            },
-            {
-                task: new Task(3, 'Material UI', 'for better UI', 'High', 'today', 33, 'category6'),
-                assignee: 'Eitan'
-            }
-        ]
-    }
-]
+// const dummyTeams = [
+//     {
+//         name: 'BackEnd Team',
+//         id: 5646,
+//         members: ['Ahmad', 'Eitan', 'Anas'],
+//         tasks: [
+//             {
+//                 task: new Task(1, 'routes', 'in the back', 'Hight', 'today', 3, 'category1'),
+//                 assignee: 'Ahmad'
+//             },
+//             {
+//                 task: new Task(2, 'DataBase', 'in the db', 'Urgernt', 'tmw', 2, 'category2'),
+//                 assignee: 'Ahmad'
+//             },
+//             {
+//                 task: new Task(3, 'Dummies', 'for testing', 'Medium', 'today', 6, 'category2'),
+//                 assignee: 'Eitan'
+//             }
+//         ]
+//     }
+//     ,
+//     {
+//         name: 'FronEnd Team',
+//         id: 3943,
+//         members: ['Eitan', 'Anas'],
+//         tasks: [
+//             {
+//                 task: new Task(1, 'components', 'in REACT', 'Hight', 'today', 0, 'category4'),
+//                 assignee: 'Anas'
+//             },
+//             {
+//                 task: new Task(2, 'Stores', 'in the stores file', 'Low', 'today', 54, 'category3'),
+//                 assignee: 'Anas'
+//             },
+//             {
+//                 task: new Task(3, 'Material UI', 'for better UI', 'High', 'today', 33, 'category6'),
+//                 assignee: 'Eitan'
+//             }
+//         ]
+//     }
+// ]
 
 export class TeamsStore {
+    
+    constructor() {
+        this.getTeams(localStorage.getItem('userId'))
+    }
 
     @observable teams = []
 
@@ -77,10 +81,7 @@ export class TeamsStore {
         }
         this.teams = teamsArr
     }
-
-    constructor() {
-        this.getTeams(localStorage.getItem('userId'))
-    }
+    
 
     @action addTeam = async (teamName, userId) => {
         const team1 = {

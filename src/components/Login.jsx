@@ -44,7 +44,9 @@ const Login = inject('tasksStore', 'user')(observer((props) => {
                 let details = response.data 
                 localStorage.setItem('firstName', `${details.firstName}`);
                 localStorage.setItem('lastName', `${details.lastName}`);
-                localStorage.setItem('email', `${details.email}`);               
+                localStorage.setItem('email', `${details.email}`);     
+
+                props.history.push('/')
 
             } else {
                 setOpenSnackbar(true)
@@ -66,7 +68,11 @@ const Login = inject('tasksStore', 'user')(observer((props) => {
                     style={{ marginTop: '5%' }}
                     value={passwordInput} onChange={(e) => setPasswordInput(e.target.value)} /> <br />
 
-                <Button variant="contained" color="primary" onClick={logIn}> Log In </Button> <br />
+                {/* <Link to="/welcome"> */}
+                    <Button variant="contained" color="primary" onClick={logIn}> Log In </Button>
+                {/* </Link> */}
+                 <br />
+
                 <Link to="/signUp">
                     <Button variant="contained" color="primary"> Create New Account </Button>
                 </Link>
