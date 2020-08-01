@@ -40,6 +40,7 @@ const tableIcons = {
 };
 
 export default inject('tasksStore')(observer(function TeamsByMemberTable(props) {
+    // eslint-disable-next-line
     const [selectedRow, setSelectedRow] = useState(null);
     
 
@@ -87,8 +88,8 @@ export default inject('tasksStore')(observer(function TeamsByMemberTable(props) 
                 data={state.data}
                 onRowClick={((evt, selectedRow) => setSelectedRow(selectedRow.tableData.id))}
                 // eslint-disable-next-line
-                options={{ rowStyle: rowData => ({backgroundColor: (selectedRow === rowData.tableData.id) ? '#EEE' : '#FFF'})},
-                { headerStyle: { backgroundColor: '#01579b', color: '#FFF' }}}
+                // options={{ rowStyle: rowData => ({backgroundColor: (selectedRow === rowData.tableData.id) ? '#EEE' : '#FFF'})},
+                // { headerStyle: { backgroundColor: '#01579b', color: '#FFF' }}}
                 // editable={{
                 //     onRowAdd:
                 //         (newData) =>

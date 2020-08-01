@@ -62,6 +62,7 @@ export default inject('teamsStore', 'tasksStore')(observer(function TeamsByTaskT
     }
 
     const usernamesLookUps = getUsernamesLookup(members)
+    // eslint-disable-next-line
     const [selectedRow, setSelectedRow] = useState(null);
     const [openSnackbar, setOpenSnackbar] = useState(false)
     const [snackbarMessage, setSnackbarMessage] = useState('')
@@ -221,8 +222,8 @@ export default inject('teamsStore', 'tasksStore')(observer(function TeamsByTaskT
                     } } 
                     onRowClick={((evt, selectedRow) => setSelectedRow(selectedRow.tableData.id))}
                     // eslint-disable-next-line
-                    options={{ rowStyle: rowData => ({backgroundColor: (selectedRow === rowData.tableData.id) ? '#EEE' : '#FFF'})},
-                    { headerStyle: { backgroundColor: '#01579b', color: '#FFF' }}}
+                    // options={{ rowStyle: rowData => ({backgroundColor: (selectedRow === rowData.tableData.id) ? '#EEE' : '#FFF'})},
+                    // { headerStyle: { backgroundColor: '#01579b', color: '#FFF' }}}
             />
 
             <Snackbar open={openSnackbar} autoHideDuration={5000} 

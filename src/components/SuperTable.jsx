@@ -45,7 +45,7 @@ const tableIcons = {
 
 export default inject('tasksStore')(observer(function SuperTable(props) {
   const tasksStore = props.tasksStore
-
+// eslint-disable-next-line
   const [selectedRow, setSelectedRow] = useState(null);
 
   const [state, setState] = React.useState({
@@ -166,8 +166,8 @@ export default inject('tasksStore')(observer(function SuperTable(props) {
   
         onRowClick={((evt, selectedRow) => setSelectedRow(selectedRow.tableData.id))}
         // eslint-disable-next-line
-        options={{ rowStyle: rowData => ({backgroundColor: (selectedRow === rowData.tableData.id) ? '#EEE' : '#FFF'})},
-        { headerStyle: { backgroundColor: '#01579b', color: '#FFF' }}}
+        // options={{ rowStyle: rowData => ({backgroundColor: (selectedRow === rowData.tableData.id) ? '#EEE' : '#FFF'})},
+        // { headerStyle: { backgroundColor: '#4051b5', color: '#FFF' }}}
 
       />
 

@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react'
 // import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
-// import TasksTable from './TasksTable'
-// import AddTask from './AddTask'
 import { inject, observer } from 'mobx-react'
 import '../styles/tasksPage.css'
 // import { toJS } from 'mobx'
