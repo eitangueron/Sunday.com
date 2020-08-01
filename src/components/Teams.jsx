@@ -91,7 +91,21 @@ const Teams = inject('teamsStore')(observer((props) => {
     return (
         <div id="tasks-page">
 
-            <Button variant='contained' color='primary' onClick={()=>setShowAut(!showAut)}> Add Automation </Button>
+            <div id="buttons">
+            <div id="controling-buttons">
+
+            <Button variant='contained' color='primary' onClick={()=>setShowAut(!showAut)}
+             style={{ width: 'fit-content', marginRight:'2%' }}> Add Automation </Button>
+
+            <Button variant='contained' color='primary' onClick={()=>setManageTeams(!manageTeams)} style={{ width: 'fit-content'}}> Manage Teams </Button>
+             </div>
+                 
+            <Button variant='contained' color='primary' style={{ width: 'fit-content', justifySelf: 'end', marginRight:'2%'}} 
+            onClick={() => toggleShow()}>{toShow === 'tasks' ?  'Show By Members' :  'Show By Teams'}</Button>
+            
+            </div>
+
+            {manageTeams ? <TeamHandler/> : null}
             
             {showAut ? <div className="aut">
                 Hello Sunday.com, <br></br>
@@ -106,14 +120,6 @@ const Teams = inject('teamsStore')(observer((props) => {
                 <Button variant='contained' color='primary' onClick={()=>trackTask()}> Ok </Button>
             </div>  : null }
 
-            <br></br><br></br>
-
-            <Button variant='contained' color='primary' onClick={()=>setManageTeams(!manageTeams)}> Manage Teams </Button>
-            {manageTeams ? <TeamHandler/> : null}
-
-            <br></br><br></br>
-                 
-            <Button variant='contained' color='primary' onClick={() => toggleShow()}>{toShow === 'tasks' ?  'Show By Members' :  'Show By Teams'}</Button>
             {toShow === 'tasks' ? <TeamsByTasks /> : <TeamsByMembers />}
 
         </div>

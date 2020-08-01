@@ -59,10 +59,6 @@ const Tasks = inject('tasksStore','user')(observer((props) => {
     
     return (
         <div id="tasks-page">
-            {/* <Router >
-                <Link to='/addTask' ><span> Add Task</span></Link>
-                <Route exact path='/addTask' render={showAddTaskComp} />
-            </Router> */}
             <div id="new-category-input">
                 <TextField id="category-input" label="New Category" type="text" 
                     autoComplete="new-category" variant="outlined" 
@@ -74,9 +70,9 @@ const Tasks = inject('tasksStore','user')(observer((props) => {
                 {Object.keys(groupedTasks).map((group, i) => <SuperTable key={i} category={group} tasks={groupedTasks[group]}/>)}
             </div>
 
-            <Snackbar open={openSnackbar} autoHideDuration={5000} 
+            <Snackbar open={openSnackbar} autoHideDuration={5000} onClose={()=>setOpenSnackbar(false)} 
             anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}>
-                <Alert onClose={()=>setOpenSnackbar(false)} severity={snackbarStatus} variant="filled">
+                <Alert onClose={()=>setOpenSnackbar(false)} severity={snackbarStatus} variant="filled" >
                     {snackbarMessage}
                 </Alert>
             </Snackbar>

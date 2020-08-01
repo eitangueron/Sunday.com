@@ -14,7 +14,7 @@ const Welcome = (props) => {
     
     const getDateNow = ()=> {
         const today = new Date();
-        const daysOfTheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'saturday']
+        const daysOfTheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
         const monthsOfTheYear = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         const day = daysOfTheWeek[today.getDay()]
         const month = monthsOfTheYear[today.getMonth()]

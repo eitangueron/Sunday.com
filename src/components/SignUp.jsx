@@ -189,7 +189,7 @@ const SignUp = inject('usernamesStore')(observer((props) => {
 
                     <span>Already registered? </span> <Link to="/login">Login here!</Link>
 
-                    <Snackbar open={openSnackbar} autoHideDuration={5000} 
+                    <Snackbar open={openSnackbar} autoHideDuration={5000} onClose={()=>setOpenSnackbar(false)}
                     anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}>
                         <Alert onClose={()=>setOpenSnackbar(false)} severity={snackbarStatus} variant="filled">
                             {snackbarMessage}

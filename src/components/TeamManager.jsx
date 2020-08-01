@@ -61,7 +61,7 @@ const TeamManager = inject('usernamesStore', 'user', 'teamsStore')(observer((pro
                 {allTeams.map((t, i) => <option key={i}>{t}</option>)}
             </NativeSelect><br></br>
 
-            <Snackbar open={openSnackbar} autoHideDuration={5000}
+            <Snackbar open={openSnackbar} autoHideDuration={5000} onClose={()=>setOpenSnackbar(false)}
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}>
                 <Alert onClose={() => setOpenSnackbar(false)} severity={snackbarStatus} variant="filled">
                     {snackbarMessage}

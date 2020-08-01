@@ -83,7 +83,7 @@ export default inject('tasksStore')(observer(function TeamsByMemberTable(props) 
         <div className="tasks-category-table">
             <MaterialTable
                 icons={tableIcons}
-                title={props.tasks[0].assignee + ' - ' + props.teamName}
+                title={ props.teamName + ' - ' + props.tasks[0].assignee}
                 columns={state.columns}
                 data={state.data}
                 onRowClick={((evt, selectedRow) => setSelectedRow(selectedRow.tableData.id))}

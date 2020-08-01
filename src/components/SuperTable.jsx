@@ -18,10 +18,8 @@ import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import { useEffect } from 'react';
-// import { Input } from '@material-ui/core';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
-// const capitalize = require('capitalize')
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -57,17 +55,16 @@ export default inject('tasksStore')(observer(function SuperTable(props) {
         title: 'Priority', field: 'priority', lookup: { Urgent: 'Urgent', Hight: 'High', Medium: 'Medium', Low: 'Low' },
         searchable: true, sorting: false
       },
-      //cellStyle: { backgroundColor: title === 'Priority' ? '#039be5': '#FFF', color: '#FFF' },
       { title: 'Deadline', field: 'deadLine', type: "date" },
       { title: 'Status', field: 'status', initialEditValue: 'Starting', sorting: false, lookup: { Starting: 'To Do', InProgress: 'In progress', Completed: 'Completed' } },
       { title: 'Budget', field: 'budget', type: 'currency', currencySetting: { currencyCode: "ILS" } },
+      // {
+      //   field: 'url',
+      //   title: 'Asignee',
+      //   render: rowData => <img src={rowData.url} style={{width: 50, borderRadius: '50%'}}/>
+      // }
     ],
 
-    // {
-    //   field: 'url',
-    //   title: 'Avatar',
-    //   render: rowData => <img src={rowData.url} style={{width: 50, borderRadius: '50%'}}/>
-    // }
     data: props.tasks
   });
 
@@ -163,15 +160,9 @@ export default inject('tasksStore')(observer(function SuperTable(props) {
               }, 600);
             }),
         } : {}}
-  
-        onRowClick={((evt, selectedRow) => setSelectedRow(selectedRow.tableData.id))}
-        // eslint-disable-next-line
-        // options={{ rowStyle: rowData => ({backgroundColor: (selectedRow === rowData.tableData.id) ? '#EEE' : '#FFF'})},
-        // { headerStyle: { backgroundColor: '#4051b5', color: '#FFF' }}}
-
       />
 
-      <Snackbar open={openSnackbar} autoHideDuration={5000}
+      <Snackbar open={openSnackbar} autoHideDuration={5000} onClose={()=>setOpenSnackbar(false)}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}>
         <Alert onClose={() => setOpenSnackbar(false)} severity={snackbarStatus} variant="filled">
           {snackbarMessage}
