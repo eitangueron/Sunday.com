@@ -20,23 +20,8 @@ const Teams = inject('teamsStore')(observer((props) => {
     const [toShow, setToShow] = useState('tasks')
 
     const [alltasks, setAll] = useState([])
-    const statusArr = ['Starting','In progress','Completed']
+    const statusArr = ['In progress','Completed']
 
-// eslint-disable-next-line
-    const fetchData = () => {
-        props.teamsStore.getTeams(localStorage.getItem('userId'))
-    }
-// eslint-disable-next-line
-    const getTasks = async () => {
-        let alltasks = []
-        try {
-            let tasks = await axios.get(`${API_URL}/alltasks`); 
-            alltasks = tasks.data;
-          } catch (err) {
-            console.log(err);
-          }
-        setAll(alltasks)
-    }
 
     useEffect(()=>{
         const fetchData = async () => {
@@ -60,7 +45,6 @@ const Teams = inject('teamsStore')(observer((props) => {
         getTasks()
     }, [])
 
-    // useEffect(getTasks, [])
 
     const [manageTeams, setManageTeams] = useState(false)
 
@@ -84,9 +68,16 @@ const Teams = inject('teamsStore')(observer((props) => {
     }
 
     const [showAut, setShowAut] = useState(false)
-    // const toggleTeamManager = () => {
-    //     setManageTeams(!manageTeams) : setManageTeams(true)
-    // }
+    
+    const toggleTeamManager = (tab) => {
+        if(tab === 'automation'){
+            setShowAut(!showAut)
+            setManageTeams(false)
+        } else if(tab === 'manage-teams'){
+            setShowAut(false)
+            setManageTeams(!manageTeams)
+        }
+    }
 
     return (
         <div id="tasks-page">
@@ -94,10 +85,11 @@ const Teams = inject('teamsStore')(observer((props) => {
             <div id="buttons">
             <div id="controling-buttons">
 
-            <Button variant='contained' color='primary' onClick={()=>setShowAut(!showAut)}
+            <Button variant='contained' color='primary' onClick={()=>toggleTeamManager('automation')}
              style={{ width: 'fit-content', marginRight:'2%' }}> Add Automation </Button>
 
-            <Button variant='contained' color='primary' onClick={()=>setManageTeams(!manageTeams)} style={{ width: 'fit-content'}}> Manage Teams </Button>
+            <Button variant='contained' color='primary' onClick={()=>toggleTeamManager('manage-teams')}
+            style={{ width: 'fit-content'}}> Manage Teams </Button>
              </div>
                  
             <Button variant='contained' color='primary' style={{ width: 'fit-content', justifySelf: 'end', marginRight:'2%'}} 
@@ -112,7 +104,9 @@ const Teams = inject('teamsStore')(observer((props) => {
                 Please notify me when task with the name  
                 <NativeSelect id="select" value={taskInput} onChange={(e) => settaskInput(e.target.value)}>
                 <option></option>
-                {alltasks.map((t, i) => <option key={i}>{t.taskId + '  ' + t.taskName}</option>)}
+                {alltasks.map((t, i) => <option key={i}>{
+                // t.taskId + '  ' +
+                 t.taskName}</option>)}
                 </NativeSelect><br></br> status change to  <NativeSelect id="select" value={statusInput} onChange={(e) => setstatusInput(e.target.value)}>
                     <option></option>
                     {statusArr.map((t, i) => <option key={i}>{t}</option>)}

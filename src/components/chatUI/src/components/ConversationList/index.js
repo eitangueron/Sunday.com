@@ -3,8 +3,6 @@ import ConversationSearch from '../ConversationSearch';
 import ConversationListItem from '../ConversationListItem';
 import Toolbar from '../Toolbar';
 import ToolbarButton from '../ToolbarButton';
-// import axios from 'axios';
-
 import './ConversationList.css';
 import { observer, inject } from 'mobx-react';
 import Axios from 'axios';
@@ -16,7 +14,7 @@ const API_URL = 'http://localhost:3200'
 
 export default inject('tasksStore', 'user', 'chatStore')(observer(function ConversationList(props) {
   
-  const [conversations, setConversations] = useState([]);
+  const [conversations, setConversations] = useState([props.chatStore.conversations]);
   const chatStore = props.chatStore
   // const conversations = chatStore.conversations
   // eslint-disable-next-line
@@ -26,9 +24,6 @@ export default inject('tasksStore', 'user', 'chatStore')(observer(function Conve
   // eslint-disable-next-line
   let teamID = chatStore.currentTeamDisplayedID
 
-  // useEffect(() => {
-  //   getTeams()
-  // },[chatStore.MY_USER_ID, chatStore.MY_TEAMS_IDS])
 
   useEffect(() => {
     getTeams()

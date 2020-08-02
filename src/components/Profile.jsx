@@ -7,8 +7,8 @@ import { Typography, Box } from '@material-ui/core';
 import 'fontsource-roboto';
 import { makeStyles } from '@material-ui/core/styles';
 // import Button from '@material-ui/core/Button';
-import Badge from '@material-ui/core/Badge';
-import MailIcon from '@material-ui/icons/Mail';
+// import Badge from '@material-ui/core/Badge';
+// import MailIcon from '@material-ui/icons/Mail';
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
 
@@ -38,7 +38,9 @@ const Profile = inject('tasksStore')(observer((props) => {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
 
+  // eslint-disable-next-line
   const [urgentTasks, setUrgent] = useState(0);
+// eslint-disable-next-line
   const [completedTasks, setCompleted] = useState(0);
   const [avatar, setAvatar] = useState(0);
 
@@ -151,59 +153,6 @@ const Profile = inject('tasksStore')(observer((props) => {
                   gutterBottom>
                   {bull} Email : {localStorage.getItem('email')}
                 </Typography>
-                {/* <Typography
-                      color='primary'
-                      variant='h5'
-                      component='h4'
-                      gutterBottom>
-                      {bull} Open Tasks
-                    </Typography> */}
-                {/* <span>
-                      <Badge
-                        className='open-tasks'
-                        badgeContent={openTask}
-                        color='primary'>
-                        <MailIcon />
-                      </Badge>
-                    </span> */}
-                <span>
-                  <Typography
-                    color='primary'
-                    variant='h5'
-                    component='h4'
-                    gutterBottom>
-                    {bull} Completed Tasks
-                        <Badge
-                      className='completed-tasks'
-                      badgeContent={completedTasks}
-                      color='secondary'
-                      display='inline'>
-                      <MailIcon />
-                    </Badge>
-                  </Typography>
-                </span>
-                <Typography
-                  color='primary'
-                  variant='h5'
-                  component='h4'
-                  gutterBottom>
-                  {bull} Urgent Tasks
-                      <Badge
-                    className='urgent-tasks'
-                    badgeContent={urgentTasks}
-                    color='secondary'
-                    display='inline'>
-                    <MailIcon />
-                  </Badge>
-                </Typography>
-                <span></span>
-                <br></br>
-                {/* <Button
-                      size='small'
-                      color='textSecondary'
-                      onClick={getAnalysis}>
-                      Show my stats
-                    </Button> */}
               </div>
             </Paper>
           </Box>

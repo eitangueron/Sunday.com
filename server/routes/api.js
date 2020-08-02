@@ -198,7 +198,7 @@ router.get('/tasks/:userId', function (req, res) {
 
 router.get('/alltasks', function (req, res) {
     sequelize.query(`SELECT tasks.taskId,tasks.taskName,tasks.description,tasks.priority,tasks.deadLine,tasks.status,tasks.budget,tasks.category
-    FROM tasks
+    FROM tasks 
    `, { type: Sequelize.QueryTypes.SELECT })
         .then( results => res.send(results) )
 })

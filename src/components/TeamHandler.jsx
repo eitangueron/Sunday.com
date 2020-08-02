@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { InputLabel, NativeSelect, TextField, Button } from '@material-ui/core';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
-// const capitalize = require('capitalize')
+const capitalize = require('capitalize')
 
 const API_URL = 'http://localhost:3200'
 // const API_URL = ''
@@ -30,6 +30,7 @@ const TeamHandler = inject('usernamesStore', 'user', 'teamsStore')(observer((pro
     const [snackbarMessage, setSnackbarMessage] = useState('')
     const [snackbarStatus, setSnackbarStatus] = useState('')
 
+    // eslint-disable-next-line
     const getContenders = () => {
         const members = team.members
         const contenders = usernames.filter(u => !members.includes(u))
@@ -41,16 +42,14 @@ const TeamHandler = inject('usernamesStore', 'user', 'teamsStore')(observer((pro
             setSnackbarMessage('Enter a name for the team')
             setSnackbarStatus('error')
             setOpenSnackbar(true)
-            // alert('Enter a name for the team')
             return
         }
-        // const newTeam = capitalize(newTeamInput)
-        const newTeam = newTeamInput
+        const newTeam = capitalize(newTeamInput)
+        // const newTeam = newTeamInput
         await props.teamsStore.addTeam(newTeam, localStorage.getItem('userId'))
         setSnackbarMessage(`Team: ${newTeam} was Added Successfully`)
         setSnackbarStatus('success')
         setOpenSnackbar(true)
-        // alert(`Team: ${newTeamInput} was Added Successfully`)
         setTeamInput('')
         await props.teamsStore.getTeams(localStorage.getItem('userId'))
         const t = props.teamsStore.teams.find(t => t.name === teamInput)
@@ -84,6 +83,11 @@ const TeamHandler = inject('usernamesStore', 'user', 'teamsStore')(observer((pro
 
         await Axios.post(`${API_URL}/teamsusers/${teamId}/${member}`)
         props.teamsStore.getTeams(localStorage.getItem('userId'))
+
+        // setSnackbarMessage(`Team: ${newTeam} was Added Successfully`)
+        // setSnackbarStatus('success')
+        // setOpenSnackbar(true)
+        // setTeamInput('')
     }
 
     const removeMemberFromTeam = async () => {
@@ -93,41 +97,53 @@ const TeamHandler = inject('usernamesStore', 'user', 'teamsStore')(observer((pro
         await Axios.post(`${API_URL}/members/${teamInput}/${idToDelete}`)
         props.teamsStore.getTeams(localStorage.getItem('userId'))
 
+        // setSnackbarMessage(`Team: ${newTeam} was Added Successfully`)
+        // setSnackbarStatus('success')
+        // setOpenSnackbar(true)
+        // setTeamInput('')
     }
 
     return (
         <div style={{ marginLeft: '2%' }}>
+            <div id="add-team">
+                <p style={{ fontStyle: 'italic'}}>Add Team:</p>
+                <div id="new-category-input">
+                    <TextField id="category-input" label="New Team" type="text" variant="outlined"
+                        style={{}}
+                        value={newTeamInput} onChange={(e) => setTeamInput(e.target.value)} />
+                    <Button variant='contained' color='primary' onClick={addTeam}> Add Team </Button>
+                </div>
+             </div>
 
-            <p>Add Team</p>
-            <div id="new-category-input">
-                <TextField id="category-input" label="New Team" type="text" variant="outlined"
-                    style={{}}
-                    value={newTeamInput} onChange={(e) => setTeamInput(e.target.value)} />
-                <Button variant='contained' color='primary' onClick={addTeam}> Add Team </Button>
+            <div id="edit-team">
+                <p style={{ fontStyle: 'italic'}}>Edit Team:</p>
+                <InputLabel htmlFor="select">Choose Team</InputLabel>
+                <NativeSelect id="select" value={teamInput} onChange={(e) => setTeam(e.target.value)}>
+                    <option></option>
+                    {teams.map((t, i) => <option key={i}>{t}</option>)}
+                </NativeSelect><br></br>
+
+                <p style={{ fontStyle: 'italic'}}>Add Member:</p>
+                <InputLabel htmlFor="select">Choose Team</InputLabel>
+                <NativeSelect id="select" value={member} onChange={(e) => setMember(e.target.value)}>
+                    <option></option>
+                
+                    {teamInput ? props.usernamesStore.usernames.map(u => u.username).map((u, i) => <option key={i}>{u}</option>) : null}
+                    
+                    {/* {teamInput ?  props.usernamesStore.usernames.map(u => u.username).filter(u => !props.teamsStore.teams.find(t => t.name == teamInput).members.includes(u)).map((u, i) => <option key={i}>{u}</option>) : null} */}
+
+                    {/* {teamInput ? getContenders().map((u, i) => <option key={i}>{u}</option>) : null} */}
+                </NativeSelect>
+                <button onClick={() => addMemberToTeam()}>Add</button>
+
+                <p style={{ fontStyle: 'italic'}}>Remove Member:</p>
+                <InputLabel htmlFor="select">Choose A Member</InputLabel>
+                <NativeSelect id="select" value={memberToDelete} onChange={(e) => setMemberToDelete(e.target.value)}>
+                    <option></option>
+                    {teamInput ? props.teamsStore.teams.find(t => t.name === teamInput).members.map((u, i) => <option key={i}>{u}</option>) : null}
+                </NativeSelect>
+                <button onClick={() => removeMemberFromTeam()}>Remove</button>
             </div>
-
-            <p>Your Teams</p>
-            <InputLabel htmlFor="select">Choose Team</InputLabel>
-            <NativeSelect id="select" value={teamInput} onChange={(e) => setTeam(e.target.value)}>
-                <option></option>
-                {teams.map((t, i) => <option key={i}>{t}</option>)}
-            </NativeSelect><br></br>
-
-            <p>Add Member</p>
-            <InputLabel htmlFor="select">Choose Team</InputLabel>
-            <NativeSelect id="select" value={member} onChange={(e) => setMember(e.target.value)}>
-                <option></option>
-                {teamInput ? getContenders().map((u, i) => <option key={i}>{u}</option>) : null}
-            </NativeSelect>
-            <button onClick={() => addMemberToTeam()}>Add</button>
-
-            <p>Remove Member</p>
-            <InputLabel htmlFor="select">Choose A Member</InputLabel>
-            <NativeSelect id="select" value={memberToDelete} onChange={(e) => setMemberToDelete(e.target.value)}>
-                <option></option>
-                {teamInput ? props.teamsStore.teams.find(t => t.name === teamInput).members.map((u, i) => <option key={i}>{u}</option>) : null}
-            </NativeSelect>
-            <button onClick={() => removeMemberFromTeam()}>Remove</button>
 
 
             <Snackbar open={openSnackbar} autoHideDuration={5000} onClose={()=>setOpenSnackbar(false)}

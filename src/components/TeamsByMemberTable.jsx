@@ -56,21 +56,6 @@ export default inject('tasksStore')(observer(function TeamsByMemberTable(props) 
         data: props.tasks
     });
 
-    // const addTask = (rowData) => {
-    //     console.log(rowData)
-    //     const newTask = { ...rowData, category: props.category }
-    //     tasksStore.addTask(newTask)
-    // }
-
-    // const updateTask = (rowData) => {
-    //     const updatedTask = { ...rowData, category: props.category }
-    //     tasksStore.updateTask(updatedTask)
-    // }
-
-    // const deleteTask = (rowData) => {
-    //     const taskToDelete = rowData.taskId
-    //     tasksStore.deleteTask(taskToDelete)
-    // }
 
     useEffect(() => {
         let oldData = { ...state }
@@ -87,37 +72,6 @@ export default inject('tasksStore')(observer(function TeamsByMemberTable(props) 
                 columns={state.columns}
                 data={state.data}
                 onRowClick={((evt, selectedRow) => setSelectedRow(selectedRow.tableData.id))}
-                // eslint-disable-next-line
-                // options={{ rowStyle: rowData => ({backgroundColor: (selectedRow === rowData.tableData.id) ? '#EEE' : '#FFF'})},
-                // { headerStyle: { backgroundColor: '#01579b', color: '#FFF' }}}
-                // editable={{
-                //     onRowAdd:
-                //         (newData) =>
-                //             new Promise((resolve) => {
-                //                 setTimeout(() => {
-                //                     resolve();
-
-                //                     addTask(newData)
-                //                 }, 600);
-                //             })
-                //     ,
-                //     onRowUpdate: (newData, oldData) =>
-                //         new Promise((resolve) => {
-                //             setTimeout(() => {
-                //                 resolve();
-
-                //                 updateTask(newData)
-                //             }, 600);
-                //         }),
-                //     onRowDelete: (oldData) =>
-                //         new Promise((resolve) => {
-                //             setTimeout(() => {
-                //                 resolve();
-
-                //                 if (oldData.status == 3) { deleteTask(oldData) }
-                //             }, 600);
-                //         }),
-                // }}
             />
         </div>
     );
