@@ -28,21 +28,7 @@ const Welcome = (props) => {
         return fullDate
     }
 
-
     let userName = localStorage['firstName'] +  ' ' +localStorage['lastName']
-    
-    // const [userName, setUserName] =  useState('')
-
-    // const getUserName = async () => {
-    //     const userId = localStorage['userId']
-    //     const res = await Axios.get(`${API_URL}/user/${userId}`)
-    //     const theUserName = res.data.firstName + ' ' + res.data.lastName
-    //     setUserName( theUserName )
-    // }
-
-    // useEffect(getUserName,[])
-
-    // const userName = localStorage['username']
 
     return (
        <div id="welcome-container">
