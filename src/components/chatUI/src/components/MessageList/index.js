@@ -9,8 +9,8 @@ import io from 'socket.io-client'
 import { inject, observer } from 'mobx-react';
 import Axios from 'axios';
 
-const API_URL = 'http://localhost:3200'
-// const API_URL = ''
+// const API_URL = 'http://localhost:3200'
+const API_URL = ''
 
 const socketURL = API_URL
 const socket = io(socketURL)
@@ -33,8 +33,6 @@ export default inject('tasksStore', 'user', 'chatStore')(observer(function Messa
   // eslint-disable-next-line
   // const API_URL = '${API_URL}' //weird not understood
 
-  const API_URL = 'http://localhost:3200'
-// const API_URL = ''
   
   useEffect(() => {
       chatStore.setMY_USER_ID()

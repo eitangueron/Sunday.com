@@ -4,8 +4,8 @@ import io from 'socket.io-client'
 import './ConversationListItem.css';
 import { observer, inject } from 'mobx-react';
 
-const API_URL = 'http://localhost:3200'
-// const API_URL = ''
+// const API_URL = 'http://localhost:3200'
+const API_URL = ''
 const socketURL = API_URL
 const socket = io(socketURL)
 
