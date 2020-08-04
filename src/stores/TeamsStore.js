@@ -53,6 +53,12 @@ export class TeamsStore {
         // const id = response.data.teamId
         // this.teams.push({ name: teamName, id: id })
     }
+
+    @action deleteTeam = async (teamName, userId) => {
+        await axios.delete(`${API_URL}/deleteTeam/${teamName}/${userId}`)
+        this.getTeams(localStorage.getItem('userId'))
+    }
+
     @action addTask = async (teamName, rowData) => {
         const userName = rowData.assignee
         const response1 = await axios.get(`${API_URL}/userid/${userName}`)

@@ -8,7 +8,6 @@ import { useEffect } from 'react';
 import '../styles/teams.css'
 import {  NativeSelect } from '@material-ui/core';
 import axios from 'axios';
-// import TeamManager from './TeamManager'
 import TeamHandler from './TeamHandler'
 
 const API_URL = 'http://localhost:3200';
@@ -96,7 +95,7 @@ const Teams = inject('teamsStore')(observer((props) => {
             onClick={() => toggleShow()}>{toShow === 'tasks' ?  'Show By Members' :  'Show By Teams'}</Button>
             
             </div>
-
+<hr/>
             {manageTeams ? <TeamHandler/> : null}
             
             {showAut ? <div className="aut">
@@ -111,8 +110,10 @@ const Teams = inject('teamsStore')(observer((props) => {
                     <option></option>
                     {statusArr.map((t, i) => <option key={i}>{t}</option>)}
                 </NativeSelect>.<br></br>     
-                <Button variant='contained' color='primary' onClick={()=>trackTask()}> Ok </Button>
-            </div>  : null }
+                <Button variant='contained' color='primary' onClick={()=>trackTask()}
+                style={{ width: '40px', marginLeft: '520px', marginTop: '3%', marginBottom: '-1%'}}> Ok </Button>
+
+            </div> : null }
 
             {toShow === 'tasks' ? <TeamsByTasks /> : <TeamsByMembers />}
 

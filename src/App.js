@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
 import Tasks from './components/Tasks'
@@ -14,7 +14,6 @@ import TeamHandler from './components/TeamHandler';
 import Calendar from './components/calendar';
 import Analysis from './components/Analysis';
 import Welcome from './components/welcome';
-import Axios from 'axios';
 
 
 const App = inject('tasksStore', 'user', 'chatStore', 'teamsStore')(observer((props) => {

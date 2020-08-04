@@ -304,6 +304,34 @@ router.delete('/deleteTask/:taskId', function (req, res) {
         })
 })
 
+/*
+    Delete team 
+*/
+router.delete('/deleteTeam/:teamName/:userId', function (req, res) {
+    const teamName = req.params.teamName
+    const userId = req.params.userId
+    // const id = 
+    sequelize.query(`SELECT teams.teamId FROM teams, teams_users
+    WHERE teams.teamName = '${teamName}'
+    AND teams_users.userId = ${userId}
+    AND teams_users.is_admin = 1 
+    AND teams_users.teamId = teams.teamId
+   `).then(
+       function(result){
+           const id = result[0][0].teamId
+           sequelize.query(`DELETE FROM teams
+                            WHERE teams.teamId = ${id}
+                           `)
+               .then(function (result) {
+                   sequelize.query(`DELETE FROM teams_tasks
+                                    WHERE teams_tasks.teamId = ${id}
+                   `).then(function () {
+                       res.send('success')
+                   })
+               })
+       }
+   )
+})
 
 /*
     sending  message for a user
