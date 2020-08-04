@@ -9,8 +9,8 @@ import { inject, observer } from 'mobx-react';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 
-const API_URL = 'http://localhost:3200'
-// const API_URL = ''
+// const API_URL = 'http://localhost:3200'
+const API_URL = ''
 
 const SignUp = inject('usernamesStore')(observer((props) => {
     

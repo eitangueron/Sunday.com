@@ -7,8 +7,8 @@ import './ConversationList.css';
 import { observer, inject } from 'mobx-react';
 import Axios from 'axios';
 
-const API_URL = 'http://localhost:3200'
-// const API_URL = ''
+// const API_URL = 'http://localhost:3200'
+const API_URL = ''
 
   //onclick => chatStore.changeCurrentTeamDisplayedID(newID)           setCurrentTeamDisplayedID(newID)
 

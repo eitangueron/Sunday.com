@@ -8,8 +8,8 @@ import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 const capitalize = require('capitalize')
 
-const API_URL = 'http://localhost:3200'
-// const API_URL = ''
+// const API_URL = 'http://localhost:3200'
+const API_URL = ''
 
 
 const TeamHandler = inject('usernamesStore', 'user', 'teamsStore')(observer((props) => {

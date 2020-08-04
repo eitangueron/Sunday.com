@@ -10,8 +10,8 @@ import { Link } from 'react-router-dom';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 
-const API_URL = 'http://localhost:3200'
-// const API_URL = ''
+// const API_URL = 'http://localhost:3200'
+const API_URL = ''
 
 const Login = inject('tasksStore', 'user')(observer((props) => {
 

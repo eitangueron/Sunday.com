@@ -7,9 +7,6 @@ import { Link } from 'react-router-dom';
 // import { observer, inject } from 'mobx-react';
 // import Axios from 'axios';
 
-// const API_URL = 'http://localhost:3200'
-// const API_URL = ''
-
 const Welcome = (props) => {
     
     const getDateNow = ()=> {
