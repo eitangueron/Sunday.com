@@ -27,7 +27,7 @@ const TeamsByTasks = inject('teamsStore')(observer((props) => {
         }
         isAdmin()
         // eslint-disable-next-line
-    }, [])
+    },[])
     
     const modifyTeams = (teams) => {
         if (!teams) { return }

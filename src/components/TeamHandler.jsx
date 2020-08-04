@@ -103,28 +103,56 @@ const TeamHandler = inject('usernamesStore', 'user', 'teamsStore')(observer((pro
 
 
     const addMemberToTeam = async () => {
+        if(!teamInput.length){ 
+            setSnackbarMessage(`Please pick a team!`)
+            setSnackbarStatus('error')
+            setOpenSnackbar(true)
+            setTeamInput('')
+            return
+        } 
+        if(!member.length){
+            setSnackbarMessage(`Please pick a member!`)
+            setSnackbarStatus('error')
+            setOpenSnackbar(true)
+            setTeamInput('')
+            return
+        }
         const teamId = teamsObj.find(t => t.teamName === teamInput).teamId
 
         await Axios.post(`${API_URL}/teamsusers/${teamId}/${member}`)
         props.teamsStore.getTeams(localStorage.getItem('userId'))
 
-        // setSnackbarMessage(`Team: ${teamToDelete} was Added Successfully`)
-        // setSnackbarStatus('success')
-        // setOpenSnackbar(true)
-        // setTeamInput('')
+        setSnackbarMessage(`${member} was added to ${teamInput} Successfully`)
+        setSnackbarStatus('success')
+        setOpenSnackbar(true)
+        setTeamInput('')
     }
 
     const removeMemberFromTeam = async () => {
+        if(!teamInput.length){ 
+            setSnackbarMessage(`Please pick a team!`)
+            setSnackbarStatus('error')
+            setOpenSnackbar(true)
+            setTeamInput('')
+            return
+        } 
+        if(!member.length){
+            setSnackbarMessage(`Please pick a member!`)
+            setSnackbarStatus('error')
+            setOpenSnackbar(true)
+            setTeamInput('')
+            return
+        }
         const response = await Axios.get(`${API_URL}/userid/${memberToDelete}`)
         const idToDelete = response.data.userId
 
         await Axios.post(`${API_URL}/members/${teamInput}/${idToDelete}`)
         props.teamsStore.getTeams(localStorage.getItem('userId'))
 
-        // setSnackbarMessage(`Team: ${newTeam} was Added Successfully`)
-        // setSnackbarStatus('success')
-        // setOpenSnackbar(true)
-        // setTeamInput('')
+        setSnackbarMessage(`${member} was deleted from ${teamInput} Successfully`)
+        setSnackbarStatus('success')
+        setOpenSnackbar(true)
+        setTeamInput('')
     }
 
 

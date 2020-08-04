@@ -50,8 +50,7 @@ export default inject('teamsStore', 'tasksStore')(observer(function TeamsByTaskT
 
     const teamsStore = props.teamsStore
     const members = teamsStore.teams.find(t => t.name === props.name).members
-    const isAdmin = props.isAdmin
-    // console.log(isAdmin, props.name)
+    // const isAdmin = props.isAdmin
 
     const getUsernamesLookup = (members) => {
         const usernamesLookUp = {}
@@ -170,11 +169,6 @@ export default inject('teamsStore', 'tasksStore')(observer(function TeamsByTaskT
         // eslint-disable-next-line
     }, [props.rows, state.teams])
 
-    //ahmad - make this create the automation (onclicked in lone 177 if you need to enter row data)
-
-    // const tellMeWhenComplete = () => {
-    //     alert('hey')
-    // }
 
     return (
         <div className="tasks-category-table">
@@ -184,7 +178,7 @@ export default inject('teamsStore', 'tasksStore')(observer(function TeamsByTaskT
                 columns={state.columns}
                 data={state.data}
                 // .map(r => ({...r, notify:<AlarmOnIcon onClick={tellMeWhenComplete}/>}))}
-                editable= { isAdmin ? {
+                editable= {{
                     onRowAdd:
                         (newData) =>
                             new Promise((resolve) => {
@@ -209,17 +203,17 @@ export default inject('teamsStore', 'tasksStore')(observer(function TeamsByTaskT
                                 deleteTask(oldData)
                             }, 600);
                         }),
-                    } 
-                    :
-                    {
-                        onRowUpdate: (newData, oldData) =>
-                        new Promise((resolve) => {
-                            setTimeout(() => {
-                                resolve();
-                                updateTask(newData)
-                            }, 600);
-                        })  
-                    } } 
+                    } }
+                    //  {isAdmin ? :
+                    // {
+                    //     onRowUpdate: (newData, oldData) =>
+                    //     new Promise((resolve) => {
+                    //         setTimeout(() => {
+                    //             resolve();
+                    //             updateTask(newData)
+                    //         }, 600);
+                    //     })  
+                    // } }
                     onRowClick={((evt, selectedRow) => setSelectedRow(selectedRow.tableData.id))}
                     // eslint-disable-next-line
                     // options={{ rowStyle: rowData => ({backgroundColor: (selectedRow === rowData.tableData.id) ? '#EEE' : '#FFF'})},
