@@ -25,12 +25,12 @@ export default inject('tasksStore', 'user', 'chatStore', 'teamsStore')(observer(
   let teamID = chatStore.currentTeamDisplayedID
 
   const MY_USER_ID = chatStore.MY_USER_ID     //which is in local storage
-  let currentTeamDisplayedID = chatStore.currentTeamDisplayedID 
+  // let currentTeamDisplayedID = chatStore.currentTeamDisplayedID 
 
   useEffect(() => {
     chatStore.setMY_USER_ID()
-    // eslint-disable-next-line    
     getTeams()
+    // eslint-disable-next-line    
     },[])  
 
     
@@ -54,7 +54,7 @@ export default inject('tasksStore', 'user', 'chatStore', 'teamsStore')(observer(
     return (
       <div className="conversation-list">
         <Toolbar
-          title="Chats"
+          title="Teams"
           leftItems={[
             <ToolbarButton key="cog" icon="ion-ios-cog" />
           ]}

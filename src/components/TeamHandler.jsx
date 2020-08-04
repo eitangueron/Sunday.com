@@ -23,6 +23,7 @@ const TeamHandler = inject('usernamesStore', 'user', 'teamsStore')(observer((pro
     const [memberToDelete, setMemberToDelete] = useState('')
 
     const [newTeamInput, setTeamInput] = useState('')
+    const [dltTeamInput, setDeleteTeamInput] = useState('')
     // eslint-disable-next-line
     const [team, setTeammm] = useState(props.teamsStore.teams.find(t => t.name == teamInput))
 
@@ -54,6 +55,29 @@ const TeamHandler = inject('usernamesStore', 'user', 'teamsStore')(observer((pro
         await props.teamsStore.getTeams(localStorage.getItem('userId'))
         const t = props.teamsStore.teams.find(t => t.name === teamInput)
         setTeammm(t)
+        getTeams()
+    }
+
+
+    // const [newTeamInput, setTeamInput] = useState('')
+    // const [dltTeamInput, setDeleteTeamInput] = useState('')
+    const deleteTeam = async () => {
+        if (!dltTeamInput.length) {
+            setSnackbarMessage('Enter a name for the team')
+            setSnackbarStatus('error')
+            setOpenSnackbar(true)
+            return
+        }
+        const teamToDelete = capitalize(dltTeamInput)
+        await props.teamsStore.deleteTeam(teamToDelete, localStorage.getItem('userId'))
+        setSnackbarMessage(`Team: ${teamToDelete} was Deleted Successfully`)
+        setSnackbarStatus('success')
+        setOpenSnackbar(true)
+        setTeamInput('')
+        await props.teamsStore.getTeams(localStorage.getItem('userId'))
+        const t = props.teamsStore.teams.find(t => t.name === teamInput)
+        setTeammm(t)
+        getTeams()
     }
 
 
@@ -64,14 +88,14 @@ const TeamHandler = inject('usernamesStore', 'user', 'teamsStore')(observer((pro
     // }
 
     // useEffect(getTeams, [])
+    const getTeams = async () => {
+        const res = await Axios.get(`${API_URL}/teams/${localStorage.getItem('userId')}`)
+        setTeamsObj([...teamsObj, ...res.data])
+        setTeams(res.data.map(t => t.teamName))
+    }
     
     useEffect(
         () => {
-        const getTeams = async () => {
-            const res = await Axios.get(`${API_URL}/teams/${localStorage.getItem('userId')}`)
-            setTeamsObj([...teamsObj, ...res.data])
-            setTeams(res.data.map(t => t.teamName))
-        }
         getTeams()
         // eslint-disable-next-line
     }, [team])
@@ -84,7 +108,7 @@ const TeamHandler = inject('usernamesStore', 'user', 'teamsStore')(observer((pro
         await Axios.post(`${API_URL}/teamsusers/${teamId}/${member}`)
         props.teamsStore.getTeams(localStorage.getItem('userId'))
 
-        // setSnackbarMessage(`Team: ${newTeam} was Added Successfully`)
+        // setSnackbarMessage(`Team: ${teamToDelete} was Added Successfully`)
         // setSnackbarStatus('success')
         // setOpenSnackbar(true)
         // setTeamInput('')
@@ -103,29 +127,44 @@ const TeamHandler = inject('usernamesStore', 'user', 'teamsStore')(observer((pro
         // setTeamInput('')
     }
 
+
     return (
-        <div style={{ marginLeft: '2%' }}>
-            <div id="add-team">
+        <div>
+        <div style={{ marginLeft: '2%', display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+            <div id="add-dekete-team" style={{marginTop: '2%'}}>
                 <p style={{ fontStyle: 'italic'}}>Add Team:</p>
-                <div id="new-category-input">
+                <div id="add-team-box" style={{display: 'flex' }}>
                     <TextField id="category-input" label="New Team" type="text" variant="outlined"
-                        style={{}}
+                        style={{ width: '14vw', height: '8vh'}}
                         value={newTeamInput} onChange={(e) => setTeamInput(e.target.value)} />
-                    <Button variant='contained' color='primary' onClick={addTeam}> Add Team </Button>
+                    <Button variant='contained' color='primary' onClick={addTeam} style={{marginLeft: '2%', width: '11vw', height: '8vh' }}> Add Team </Button>
                 </div>
+                <div id="delete-team-box" style={{marginTop: '5%'}}>
+                    <p style={{ fontStyle: 'italic'}}>Delete Team:</p>
+                    <InputLabel htmlFor="select">Choose Team</InputLabel>
+                    <NativeSelect id="select" value={dltTeamInput} 
+                    style={{ width: '14vw', height: '8vh'}} onChange={(e) => setDeleteTeamInput(e.target.value)}>
+                        <option></option>
+                        {teams.map((t, i) => <option key={i}>{t}</option>)}
+                    </NativeSelect>
+                    <Button variant='contained' color='primary' onClick={deleteTeam} style={{marginLeft: '2%', width: '11vw', height: '8vh' }}> Delete Team </Button>
+                </div>
+
              </div>
 
             <div id="edit-team">
                 <p style={{ fontStyle: 'italic'}}>Edit Team:</p>
                 <InputLabel htmlFor="select">Choose Team</InputLabel>
-                <NativeSelect id="select" value={teamInput} onChange={(e) => setTeam(e.target.value)}>
+                <NativeSelect id="select" value={teamInput} onChange={(e) => setTeam(e.target.value)}
+                style={{ width: '14vw', height:'5vh'}}>
                     <option></option>
                     {teams.map((t, i) => <option key={i}>{t}</option>)}
                 </NativeSelect><br></br>
 
                 <p style={{ fontStyle: 'italic'}}>Add Member:</p>
                 <InputLabel htmlFor="select">Choose Team</InputLabel>
-                <NativeSelect id="select" value={member} onChange={(e) => setMember(e.target.value)}>
+                <NativeSelect id="select" value={member} onChange={(e) => setMember(e.target.value)}
+                style={{ width: '14vw', height:'5vh'}}>
                     <option></option>
                 
                     {teamInput ? props.usernamesStore.usernames.map(u => u.username).map((u, i) => <option key={i}>{u}</option>) : null}
@@ -134,15 +173,16 @@ const TeamHandler = inject('usernamesStore', 'user', 'teamsStore')(observer((pro
 
                     {/* {teamInput ? getContenders().map((u, i) => <option key={i}>{u}</option>) : null} */}
                 </NativeSelect>
-                <button onClick={() => addMemberToTeam()}>Add</button>
+                <Button variant='contained' color='primary' style={{marginLeft: '2%', height: '5vh', width: '7vw'}} onClick={() => addMemberToTeam()}>Add</Button>
 
                 <p style={{ fontStyle: 'italic'}}>Remove Member:</p>
                 <InputLabel htmlFor="select">Choose A Member</InputLabel>
-                <NativeSelect id="select" value={memberToDelete} onChange={(e) => setMemberToDelete(e.target.value)}>
+                <NativeSelect id="select" value={memberToDelete} onChange={(e) => setMemberToDelete(e.target.value)}
+                style={{ width: '14vw', marginBottom: '2%', height:'5vh'}}>
                     <option></option>
                     {teamInput ? props.teamsStore.teams.find(t => t.name === teamInput).members.map((u, i) => <option key={i}>{u}</option>) : null}
                 </NativeSelect>
-                <button onClick={() => removeMemberFromTeam()}>Remove</button>
+                <Button  variant='contained' color='primary' style={{marginLeft: '2%', height:'5vh', width: '7vw'}} onClick={() => removeMemberFromTeam()}>Remove</Button>
             </div>
 
 
@@ -153,9 +193,10 @@ const TeamHandler = inject('usernamesStore', 'user', 'teamsStore')(observer((pro
                 </Alert>
             </Snackbar>
 
+        </div>
+        <hr/>
 
         </div>
-
     );
 }))
 
