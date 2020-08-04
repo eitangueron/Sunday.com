@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { inject, observer } from 'mobx-react';
-import TeamsByMembers from './TeamsByMembers';
-import TeamsByTasks from './TeamsByTasks';
+import TeamsByMembers from './team-components/TeamsByMembers';
+import TeamsByTasks from './team-components/TeamsByTasks';
 import {  Button } from '@material-ui/core';
 import { useEffect } from 'react';
 // import { Router, Link } from 'react-router-dom';
 import '../styles/teams.css'
 import {  NativeSelect } from '@material-ui/core';
 import axios from 'axios';
-import TeamHandler from './TeamHandler'
+import TeamHandler from './team-components/TeamHandler'
 
 const API_URL = 'http://localhost:3200';
 // const API_URL = ''

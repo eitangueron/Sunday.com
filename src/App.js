@@ -10,7 +10,7 @@ import SignUp from './components/SignUp';
 import Profile from './components/Profile';
 import Teams from './components/Teams'
 import Chat from './components/chat';
-import TeamHandler from './components/TeamHandler';
+import TeamHandler from './components/team-components/TeamHandler';
 import Calendar from './components/calendar';
 import Analysis from './components/Analysis';
 import Welcome from './components/welcome';
