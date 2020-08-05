@@ -9,10 +9,10 @@ Demo: [https://sundayy.herokuapp.com/](https://sundayy.herokuapp.com/)
 - [Sunday](#Sunday)
   * [My Exprience](#MyExprience)
   * [Running the project](#running-the-project)
-  * [Screenshots](#screenshots)
+  <!-- * [Screenshots](#screenshots)
     + [Client List](#client-list)
     + [Add or Update Client](#add-or-update-client)
-    + [Analytics Dashboard](#analytics-dashboard)
+    + [Analytics Dashboard](#analytics-dashboard) -->
   * [Tech Stack](#tech-stack)
 
 
