@@ -88,14 +88,12 @@ For demo usage use:
     
   <p align="center"><img src="imgs4readme/team by user.png" width="500" /></p> 
 
-  <p align="center"><img src="imgs4readme/manageteam.png
-" width="500" /></p> 
+  <p align="center"><img src="imgs4readme/manageteam.png" width="500" /></p> 
 
   The wow feature - is the ability to add an automation to help enhance the teams workflow. Every user can add a *waiting request*, that he will be sent an email notifying him when a certain task status changes.
   This saves team members the time and energy by saving them the trouble of constantly checking up with each other when a task is done. (Although there's a group chat making it simple to notify ;) )
   
-<p align="center"><img src="imgs4readme/automation.png
-" width="500" /></p> 
+<p align="center"><img src="imgs4readme/automation.png" width="500" /></p> 
 
   Feel free to play around - it is very self explained. 
 
