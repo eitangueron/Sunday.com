@@ -8,9 +8,10 @@ import './MessageList.css';
 import io from 'socket.io-client'
 import { inject, observer } from 'mobx-react';
 import Axios from 'axios';
+import { config } from '../../../../../Constants'
 
-// const API_URL = 'http://localhost:3200'
-const API_URL = ''
+const API_URL= config.url.API_URL
+
 
 const socketURL = API_URL
 const socket = io(socketURL)

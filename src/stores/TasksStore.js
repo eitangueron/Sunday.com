@@ -1,7 +1,9 @@
 import { observable, computed, action } from 'mobx';
 import axios from 'axios';
-// const API_URL = 'http://localhost:3200';
-const API_URL = ''
+import { config } from '../Constants'
+
+const API_URL= config.url.API_URL
+
 const dateFormat = require('dateformat');
 
 

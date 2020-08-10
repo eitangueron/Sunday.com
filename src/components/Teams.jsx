@@ -9,9 +9,10 @@ import '../styles/teams.css'
 import {  NativeSelect } from '@material-ui/core';
 import axios from 'axios';
 import TeamHandler from './team-components/TeamHandler'
+import { config } from '../Constants'
 
-// const API_URL = 'http://localhost:3200';
-const API_URL = ''
+const API_URL= config.url.API_URL
+
 
 const Teams = inject('teamsStore')(observer((props) => {
     const [taskInput, settaskInput] = useState('')
@@ -32,14 +33,17 @@ const Teams = inject('teamsStore')(observer((props) => {
 
     useEffect(()=>{
         const getTasks = async () => {
-            let alltasks = []
-            try {
-                let tasks = await axios.get(`${API_URL}/alltasks`); 
-                alltasks = tasks.data;
-              } catch (err) {
-                console.log(err);
-              }
-            setAll(alltasks)
+            let alltasksFromDB = []
+            props.teamsStore.teams.forEach( async tID => {
+                try {
+                    // let tasks = await axios.get(`${API_URL}/alltasks`); 
+                    let tasks = await axios.get(`${API_URL}/teamstasks/${tID.id}`);  
+                    alltasksFromDB = [...alltasksFromDB, ...tasks.data]
+                    setAll([...alltasks, ...alltasksFromDB])
+                } catch (err) {
+                    console.log(err);
+                }
+            })
         }
         getTasks()
     }, [])

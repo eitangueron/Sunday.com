@@ -9,9 +9,10 @@ import { Link } from 'react-router-dom';
 //import details from 'material-ui/svg-icons/image/details';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
+import { config } from '../Constants'
 
-// const API_URL = 'http://localhost:3200'
-const API_URL = ''
+const API_URL= config.url.API_URL
+
 
 const Login = inject('tasksStore', 'user')(observer((props) => {
 

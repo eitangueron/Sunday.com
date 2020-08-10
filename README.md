@@ -74,6 +74,8 @@ For demo usage use:
 
   Here the users can manage and sort all his personal tasks, by category. In addition there will be a *Team* table where all the groups tasks that were assigned to the user will b displayed.
 
+  Tables are dynamic, you can drag a column and change the tables structure. You can also sort the tasks by a column in an ascending/descending order by clicking the arrow next to the column name.
+
   Feel free to add a category table and add personal tasks to it. Supports updating and deleting in a very convenient way.
 
   <p align="center"><img src="imgs4readme/mytasks.png" width="500" /></p> 

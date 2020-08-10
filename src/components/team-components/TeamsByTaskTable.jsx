@@ -22,9 +22,10 @@ import axios from 'axios';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 // import AlarmOnIcon from '@material-ui/icons/AlarmOn';
+import { config } from '../../Constants'
 
-// const API_URL = 'http://localhost:3200'
-const API_URL = ''
+const API_URL= config.url.API_URL
+
 
 const tableIcons = {
     Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),

@@ -4,8 +4,10 @@ import { inject, observer } from 'mobx-react';
 import TeamsByTaskTable from './TeamsByTaskTable';
 import { useEffect } from 'react';
 import Axios from 'axios';
-// const API_URL = 'http://localhost:3200'
-const API_URL = ''
+import { config } from '../../Constants'
+
+const API_URL= config.url.API_URL
+
 
 const TeamsByTasks = inject('teamsStore')(observer((props) => {
 
