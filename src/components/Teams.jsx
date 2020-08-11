@@ -31,20 +31,21 @@ const Teams = inject('teamsStore')(observer((props) => {
         // eslint-disable-next-line
     }, [])
 
+    const getTasks = async () => {
+        let alltasksFromDB = []
+        props.teamsStore.teams.forEach( async tID => {
+            try {
+                // let tasks = await axios.get(`${API_URL}/alltasks`); 
+                let tasks = await axios.get(`${API_URL}/teamstasks/${tID.id}`);  
+                alltasksFromDB = [...alltasksFromDB, ...tasks.data]
+                setAll([...alltasks, ...alltasksFromDB])
+            } catch (err) {
+                console.log(err);
+            }
+        })
+    }
+
     useEffect(()=>{
-        const getTasks = async () => {
-            let alltasksFromDB = []
-            props.teamsStore.teams.forEach( async tID => {
-                try {
-                    // let tasks = await axios.get(`${API_URL}/alltasks`); 
-                    let tasks = await axios.get(`${API_URL}/teamstasks/${tID.id}`);  
-                    alltasksFromDB = [...alltasksFromDB, ...tasks.data]
-                    setAll([...alltasks, ...alltasksFromDB])
-                } catch (err) {
-                    console.log(err);
-                }
-            })
-        }
         getTasks()
     }, [])
 
@@ -88,7 +89,12 @@ const Teams = inject('teamsStore')(observer((props) => {
             <div id="buttons">
             <div id="controling-buttons">
 
-            <Button variant='contained' color='primary' onClick={()=>toggleTeamManager('automation')}
+            <Button variant='contained' color='primary' onClick={()=>{
+                 toggleTeamManager('automation')
+                 if(!alltasks.length){
+                     getTasks()
+                 }
+                }}
              style={{ width: 'fit-content', marginRight:'2%' }}> Add Automation </Button>
 
             <Button variant='contained' color='primary' onClick={()=>toggleTeamManager('manage-teams')}
@@ -107,9 +113,7 @@ const Teams = inject('teamsStore')(observer((props) => {
                 Please notify me when task with the name  
                 <NativeSelect id="select" value={taskInput} onChange={(e) => settaskInput(e.target.value)}>
                 <option></option>
-                {alltasks.map((t, i) => <option key={i}>{
-                // t.taskId + '  ' +
-                 t.taskName}</option>)}
+                {alltasks.map((t, i) => <option key={i}>{t.taskName}</option>)}
                 </NativeSelect><br></br> status change to  <NativeSelect id="select" value={statusInput} onChange={(e) => setstatusInput(e.target.value)}>
                     <option></option>
                     {statusArr.map((t, i) => <option key={i}>{t}</option>)}
