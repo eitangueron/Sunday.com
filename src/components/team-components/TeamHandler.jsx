@@ -182,7 +182,7 @@ const TeamHandler = inject('usernamesStore', 'user', 'teamsStore')(observer((pro
 
             <div id="edit-team">
                 <p style={{ fontStyle: 'italic'}}>Edit Team:</p>
-                <InputLabel htmlFor="select">Choose Team</InputLabel>
+                <InputLabel htmlFor="select">Choose A Team</InputLabel>
                 <NativeSelect id="select" value={teamInput} onChange={(e) => setTeam(e.target.value)}
                 style={{ width: '14vw', height:'5vh'}}>
                     <option></option>
@@ -190,7 +190,7 @@ const TeamHandler = inject('usernamesStore', 'user', 'teamsStore')(observer((pro
                 </NativeSelect><br></br>
 
                 <p style={{ fontStyle: 'italic'}}>Add Member:</p>
-                <InputLabel htmlFor="select">Choose Team</InputLabel>
+                <InputLabel htmlFor="select">Choose A Member</InputLabel>
                 <NativeSelect id="select" value={member} onChange={(e) => setMember(e.target.value)}
                 style={{ width: '14vw', height:'5vh'}}>
                     <option></option>

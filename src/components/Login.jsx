@@ -31,7 +31,6 @@ const Login = inject('tasksStore', 'user')(observer((props) => {
             return
         }
         Axios.post(`${API_URL}/login`,loginData).then( async res => {
-            // console.log(res.data.status )
             if(res.data.status === 'OK'){
 
                 const userID = res.data.userId
@@ -41,7 +40,6 @@ const Login = inject('tasksStore', 'user')(observer((props) => {
 
                 await props.tasksStore.getTasksFromDB(userID) // does not seem to be vital
 
-                // console.log(response);
                 let details = response.data 
                 localStorage.setItem('firstName', `${details.firstName}`);
                 localStorage.setItem('lastName', `${details.lastName}`);

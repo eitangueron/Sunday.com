@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { inject, observer } from 'mobx-react';
 import CustomizedMenus from './menuBar';
+import Logo from '../imgs/sunday-logo.png'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     // marginRight: theme.spacing(2),
     margiRight: '60%',
     fontWeight: '600',
-    marginLeft:'0px', 
+    marginLeft:'1%', 
     width:'30vw',
     fontSize: "3.7em"
   },
@@ -42,6 +43,7 @@ const NavBar = inject('user')(observer((props) => {
       <div className={classes.root} id="nav-bar">
         <AppBar position="static" className={classes.container}>
           <Toolbar>
+              <img src={Logo} alt="" style={{height:'8vh', borderRadius:'50%'}}/>
           <Typography className={classes.menuButton} variant="h4" noWrap>
               Sunday.com
           </Typography>
