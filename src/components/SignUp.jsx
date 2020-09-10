@@ -112,9 +112,10 @@ const SignUp = inject('usernamesStore')(observer((props) => {
 
     return (
         <form>
-            <h1 id="sign-up">Sign Up</h1>
             <div id="login-page-container">
-                <div id="login-page">
+                <div id="login-page" style={{marginTop:'1%'}}>
+
+                    <h1 id="sign-up" style={{ marginTop:'-10%'}}>Sign Up</h1>
 
                     <TextField id="userName-input"
                         label="User Name"
