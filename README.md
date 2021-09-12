@@ -1,6 +1,6 @@
 # Sunday
 
-Sunday is a project management system for individuals and teams, giving users the ability to orgenize theirs tasks and enhance their workflow with automations and built in chat.
+Sunday is a project management system for individuals and teams, giving users the ability to organise theirs tasks and enhance their workflow with automations and built in chat.
 Sounds familiar ? I can neither confirm nor deny ;)
 
 Demo: [https://sundayy.herokuapp.com/](https://sundayy.herokuapp.com/)
